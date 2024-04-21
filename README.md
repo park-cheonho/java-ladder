@@ -31,4 +31,4 @@
 - [ ] StreamStudy -> 숫자 상수화
 - [ ] StreamStudy -> filter, map과 같은 부분들을 메서드로 추출
 - [ ] User -> 숫자 상수화
-- [ ] Users -> 가독성
+- [X] Users -> 가독성
