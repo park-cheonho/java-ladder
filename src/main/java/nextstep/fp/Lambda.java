@@ -2,6 +2,8 @@ package nextstep.fp;
 
 import java.util.List;
 
+import static java.lang.Long.sum;
+
 public class Lambda {
     public static void printAllOld(List<Integer> numbers) {
         System.out.println("printAllOld");
@@ -26,7 +28,7 @@ public class Lambda {
         }).start();
     }
 
-    public static int sumAll(List<Integer> numbers, Conditional c) {
+    public static int sumAll2(List<Integer> numbers, Conditional c) {
         int total = 0;
         for (int number : numbers) {
             if (c.test(number)) {
@@ -34,6 +36,13 @@ public class Lambda {
             }
         }
         return total;
+    }
+
+    public static int sumAll(List<Integer> numbers, Conditional c) {
+        return numbers.stream()
+                .filter(c::test)
+                .mapToInt(Integer::intValue)
+                .sum();
     }
 
     public static int sumAllEven(List<Integer> numbers) {
