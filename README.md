@@ -29,6 +29,6 @@
 ### review 
 - [ ] Lamda - sumAll -> 스트림으로
 - [X] StreamStudy -> 매직 넘버 상수화
-- [ ] StreamStudy -> filter, map과 같은 부분들을 메서드로 추출
+- [X] StreamStudy -> filter, map과 같은 부분들을 메서드로 추출
 - [X] User -> 매직 넘버 상수화
 - [X] Users -> 가독성

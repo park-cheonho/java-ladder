@@ -11,7 +11,8 @@ import java.util.stream.Collectors;
 
 public class StreamStudy {
 
-    private static final int MAX_LENGTH = 12;
+    private static final int NUMBER_VALID_LENGTH = 3;
+    private static final int WORDS_MAX_LENGTH = 12;
     private static final int WORDS_TO_EXTRACT_COUNT = 100;
 
     public static long countWords() throws IOException {
@@ -21,7 +22,7 @@ public class StreamStudy {
 
         long count = 0;
         for (String w : words) {
-            if (w.length() > MAX_LENGTH) count++;
+            if (w.length() > WORDS_MAX_LENGTH) count++;
         }
         return count;
     }
@@ -33,7 +34,7 @@ public class StreamStudy {
 
         // TODO 이 부분에 구현한다.
         words.stream()
-                .filter(word -> word.length() > MAX_LENGTH)
+                .filter(word -> word.length() > WORDS_MAX_LENGTH)
                 .sorted(Comparator.comparing(String::length).reversed())
                 .distinct()
                 .limit(WORDS_TO_EXTRACT_COUNT)
@@ -42,17 +43,27 @@ public class StreamStudy {
     }
 
     public static List<Integer> doubleNumbers(List<Integer> numbers) {
-        return numbers.stream().map(x -> 2 * x).collect(Collectors.toList());
+        return numbers.stream()
+                .map(x -> 2 * x).collect(Collectors.toList());
     }
 
     public static long sumAll(List<Integer> numbers) {
-        return numbers.stream().reduce(0, (x, y) -> x + y);
+        return numbers.stream()
+                .reduce(0, (x, y) -> x + y);
     }
 
     public static long sumOverThreeAndDouble(List<Integer> numbers) {
         return numbers.stream()
-                .filter(i -> i > 3)
-                .map(i -> i * 2)
+                .filter(StreamStudy::isGreaterThanThreshold)
+                .map(StreamStudy::doubleNumber)
                 .reduce(0, (x, y) -> x + y);
+    }
+
+    private static boolean isGreaterThanThreshold(int number) {
+        return number > NUMBER_VALID_LENGTH;
+    }
+
+    private static int doubleNumber(int number) {
+        return number * 2;
     }
 }
