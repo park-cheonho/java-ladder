@@ -11,6 +11,9 @@ import java.util.stream.Collectors;
 
 public class StreamStudy {
 
+    private static final int MAX_LENGTH = 12;
+    private static final int WORDS_TO_EXTRACT_COUNT = 100;
+
     public static long countWords() throws IOException {
         String contents = new String(Files.readAllBytes(Paths
                 .get("src/main/resources/fp/war-and-peace.txt")), StandardCharsets.UTF_8);
@@ -18,7 +21,7 @@ public class StreamStudy {
 
         long count = 0;
         for (String w : words) {
-            if (w.length() > 12) count++;
+            if (w.length() > MAX_LENGTH) count++;
         }
         return count;
     }
@@ -30,10 +33,10 @@ public class StreamStudy {
 
         // TODO 이 부분에 구현한다.
         words.stream()
-                .filter(word -> word.length() > 12)
+                .filter(word -> word.length() > MAX_LENGTH)
                 .sorted(Comparator.comparing(String::length).reversed())
                 .distinct()
-                .limit(100)
+                .limit(WORDS_TO_EXTRACT_COUNT)
                 .map(String::toLowerCase)
                 .forEach(System.out::println);
     }
