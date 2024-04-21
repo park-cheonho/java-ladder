@@ -26,3 +26,9 @@
 - [X] Optional 실습 2 : 요구사항 2 - Optional에서 값을 반환
 - [X] Optional 실습 3 : 요구사항 3 - Optional에서 exception 처리
 
+### review 
+- [ ] Lamda - sumAll -> 스트림으로
+- [ ] StreamStudy -> 숫자 상수화
+- [ ] StreamStudy -> filter, map과 같은 부분들을 메서드로 추출
+- [ ] User -> 숫자 상수화
+- [ ] Users -> 가독성
